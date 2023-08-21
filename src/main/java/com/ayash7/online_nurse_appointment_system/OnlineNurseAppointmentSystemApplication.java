@@ -5,9 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class OnlineNurseAppointmentSystemApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(OnlineNurseAppointmentSystemApplication.class, args);
-	}
-
+    
+    public static void main(String[] args) {
+        
+        SpringApplication.run(OnlineNurseAppointmentSystemApplication.class, args);
+        
+    }
+    
 }
