@@ -15,5 +15,5 @@ public class CustomerDTO {
         
         Integer customerID;
         String customerName, customerAddress, customerContact;
-    
+        
 }

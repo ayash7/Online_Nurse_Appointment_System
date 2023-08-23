@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ayash7.online_nurse_appointment_system.DTO.CustomerAdditionDTO;
 import com.ayash7.online_nurse_appointment_system.DTO.CustomerDTO;
 import com.ayash7.online_nurse_appointment_system.Service.CustomerService;
 
@@ -22,16 +23,16 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/customer")
 public class CustomerController {
     
-    @PostMapping
-    public ResponseEntity<CustomerDTO> addCustomer(@RequestBody CustomerDTO customerDTO) {
+    @PostMapping("/add")
+    public ResponseEntity<CustomerAdditionDTO> addCustomer(@RequestBody CustomerAdditionDTO customerAdditionDTO) {
         
-        CustomerDTO customer = customerService.addCustomer(customerDTO);
+        CustomerAdditionDTO customer = customerService.addCustomer(customerAdditionDTO);
         
-        return new ResponseEntity<CustomerDTO>(customer, HttpStatus.CREATED);
+        return new ResponseEntity<CustomerAdditionDTO>(customer, HttpStatus.CREATED);
         
     }
     
-    @PutMapping("{customerID}")
+    @PutMapping("/update/{customerID}")
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable("customerID") Integer customerID, @RequestBody CustomerDTO customerDTO) {
         
         CustomerDTO customer = customerService.updateCustomer(customerID, customerDTO);
@@ -40,12 +41,12 @@ public class CustomerController {
         
     }
     
-    @DeleteMapping("{customerID}")
+    @DeleteMapping("/delete/{customerID}")
     public ResponseEntity<String> deleteCustomer(@PathVariable("customerID") Integer customerID) {
         
         customerService.deleteCustomer(customerID);
         
-        return ResponseEntity.ok("Status: Customer successfully deleted from database.");
+        return ResponseEntity.ok("customerID: " + customerID + " | Status: Customer successfully deleted from database.");
         
     }
     
