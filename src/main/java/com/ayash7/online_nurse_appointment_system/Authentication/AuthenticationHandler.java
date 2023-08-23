@@ -20,7 +20,7 @@ public class AuthenticationHandler implements AuthenticationEntryPoint {
         
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         
-        response.getOutputStream().println("Error: Invalid login credentials.");
+        response.getOutputStream().println("Error: Login credentials required.");
         
     }
     

@@ -65,11 +65,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomer(Integer customerID) {
         
-        customerRepository.findById(customerID).orElseThrow(
+        Customer customer = customerRepository.findById(customerID).orElseThrow(
             
             () -> new ResourceNotFoundException("customerID: " + customerID + " | Status: Customer not present in database.")
             
         );
+        
+        credentialRepository.deleteById(customer.getCustomerUsername());
         
         customerRepository.deleteById(customerID);
         

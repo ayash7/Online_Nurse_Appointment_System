@@ -36,8 +36,10 @@ public class WebSecurityConfiguration {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/customer/update").hasAuthority("CUSTOMER")
-                .requestMatchers("/api/customer/delete").hasAuthority("CUSTOMER")
+                .requestMatchers("/api/customer/update/*").hasAuthority("CUSTOMER")
+                .requestMatchers("/api/customer/delete/*").hasAuthority("CUSTOMER")
+                .requestMatchers("/api/nurse/update/*").hasAuthority("NURSE")
+                .requestMatchers("/api/nurse/delete/*").hasAuthority("NURSE")
                 .anyRequest().authenticated())
             .exceptionHandling(handling -> handling
                 .authenticationEntryPoint(authenticationHandler))
@@ -50,7 +52,7 @@ public class WebSecurityConfiguration {
     @Bean
     WebSecurityCustomizer webSecurityCustomizer() {
         
-        return (web) -> web.ignoring().requestMatchers("/api/customer/add").requestMatchers("/error");
+        return (web) -> web.ignoring().requestMatchers("/api/customer/add").requestMatchers("/api/nurse/add").requestMatchers("/error");
         
     }
     

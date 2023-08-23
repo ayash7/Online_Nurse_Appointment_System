@@ -1,7 +1,12 @@
-all: compile execute
+all: compile test execute
+
+run: compile execute
 
 compile:
 	mvn compile
+
+test:
+	mvn test
 
 execute:
 	java @spring_boot.argfile com.ayash7.online_nurse_appointment_system.OnlineNurseAppointmentSystemApplication
