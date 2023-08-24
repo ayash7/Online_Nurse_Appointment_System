@@ -40,6 +40,7 @@ public class WebSecurityConfiguration {
                 .requestMatchers("/api/customer/delete/*").hasAuthority("CUSTOMER")
                 .requestMatchers("/api/nurse/update/*").hasAuthority("NURSE")
                 .requestMatchers("/api/nurse/delete/*").hasAuthority("NURSE")
+                .requestMatchers("/api/admin/*").hasAuthority("SUPERUSER")
                 .requestMatchers("/api/healthcare/*").hasAuthority("ADMIN")
                 .anyRequest().authenticated())
             .exceptionHandling(handling -> handling
