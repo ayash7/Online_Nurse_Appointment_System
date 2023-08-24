@@ -1,27 +1,27 @@
 package com.ayash7.online_nurse_appointment_system.Mapper;
 
-import com.ayash7.online_nurse_appointment_system.DTO.CustomerAdditionDTO;
 import com.ayash7.online_nurse_appointment_system.DTO.CustomerDTO;
+import com.ayash7.online_nurse_appointment_system.DTO.CustomerRegistrationDTO;
 import com.ayash7.online_nurse_appointment_system.Entity.Credential;
 import com.ayash7.online_nurse_appointment_system.Entity.Customer;
 
 public class CustomerMapper {
     
-    public static Customer mapToCustomer(CustomerAdditionDTO customerAdditionDTO) {
+    public static Customer mapToCustomer(CustomerRegistrationDTO customerRegistrationDTO) {
         
-        return new Customer(customerAdditionDTO.getCustomerID(), customerAdditionDTO.getCustomerUsername(), customerAdditionDTO.getCustomerName(), customerAdditionDTO.getCustomerAddress(), customerAdditionDTO.getCustomerContact());
-        
-    }
-    
-    public static Credential mapToCustomerCredential(CustomerAdditionDTO customerAdditionDTO) {
-        
-        return new Credential(customerAdditionDTO.getCustomerUsername(), customerAdditionDTO.getCustomerPassword(), "CUSTOMER");
+        return new Customer(customerRegistrationDTO.getCustomerID(), customerRegistrationDTO.getCustomerUsername(), customerRegistrationDTO.getCustomerName(), customerRegistrationDTO.getCustomerAddress(), customerRegistrationDTO.getCustomerContact());
         
     }
     
-    public static CustomerAdditionDTO mapToCustomerAdditionDTO(Customer customer, Credential customerCredential) {
+    public static Credential mapToCustomerCredential(CustomerRegistrationDTO customerRegistrationDTO) {
         
-        return new CustomerAdditionDTO(customer.getCustomerID(), customerCredential.getEntityUsername(), customerCredential.getEntityPassword(), customer.getCustomerName(), customer.getCustomerAddress(), customer.getCustomerContact());
+        return new Credential(customerRegistrationDTO.getCustomerUsername(), customerRegistrationDTO.getCustomerPassword(), "CUSTOMER");
+        
+    }
+    
+    public static CustomerRegistrationDTO mapToCustomerRegistrationDTO(Customer customer, Credential customerCredential) {
+        
+        return new CustomerRegistrationDTO(customer.getCustomerID(), customerCredential.getEntityUsername(), customerCredential.getEntityPassword(), customer.getCustomerName(), customer.getCustomerAddress(), customer.getCustomerContact());
         
     }
     

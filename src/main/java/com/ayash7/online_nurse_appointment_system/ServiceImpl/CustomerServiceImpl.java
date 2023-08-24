@@ -3,8 +3,8 @@ package com.ayash7.online_nurse_appointment_system.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import com.ayash7.online_nurse_appointment_system.Authentication.PasswordEncoder;
-import com.ayash7.online_nurse_appointment_system.DTO.CustomerAdditionDTO;
 import com.ayash7.online_nurse_appointment_system.DTO.CustomerDTO;
+import com.ayash7.online_nurse_appointment_system.DTO.CustomerRegistrationDTO;
 import com.ayash7.online_nurse_appointment_system.Entity.Credential;
 import com.ayash7.online_nurse_appointment_system.Entity.Customer;
 import com.ayash7.online_nurse_appointment_system.Exception.DuplicateResourceFoundException;
@@ -21,11 +21,11 @@ import lombok.AllArgsConstructor;
 public class CustomerServiceImpl implements CustomerService {
     
     @Override
-    public CustomerAdditionDTO addCustomer(CustomerAdditionDTO customerAdditionDTO) {
+    public CustomerRegistrationDTO registerCustomer(CustomerRegistrationDTO customerRegistrationDTO) {
         
-        Customer customer = CustomerMapper.mapToCustomer(customerAdditionDTO);
+        Customer customer = CustomerMapper.mapToCustomer(customerRegistrationDTO);
         
-        Credential credential = CustomerMapper.mapToCustomerCredential(customerAdditionDTO);
+        Credential credential = CustomerMapper.mapToCustomerCredential(customerRegistrationDTO);
         
         if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("customerUsername: " + credential.getEntityUsername() + " | Status: Username already present in database.");
         
@@ -33,13 +33,13 @@ public class CustomerServiceImpl implements CustomerService {
         
         credential.setEntityPassword(PasswordEncoder.encodePassword(customerPassword));
         
-        Customer addedCustomer = customerRepository.save(customer);
+        Customer registeredCustomer = customerRepository.save(customer);
         
-        Credential addedCredential = credentialRepository.save(credential);
+        Credential registeredCredential = credentialRepository.save(credential);
         
-        addedCredential.setEntityPassword(customerPassword);
+        registeredCredential.setEntityPassword(customerPassword);
         
-        return CustomerMapper.mapToCustomerAdditionDTO(addedCustomer, addedCredential);
+        return CustomerMapper.mapToCustomerRegistrationDTO(registeredCustomer, registeredCredential);
         
     }
     

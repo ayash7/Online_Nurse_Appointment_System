@@ -3,8 +3,8 @@ package com.ayash7.online_nurse_appointment_system.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import com.ayash7.online_nurse_appointment_system.Authentication.PasswordEncoder;
-import com.ayash7.online_nurse_appointment_system.DTO.NurseAdditionDTO;
 import com.ayash7.online_nurse_appointment_system.DTO.NurseDTO;
+import com.ayash7.online_nurse_appointment_system.DTO.NurseRegistrationDTO;
 import com.ayash7.online_nurse_appointment_system.Entity.Credential;
 import com.ayash7.online_nurse_appointment_system.Entity.Nurse;
 import com.ayash7.online_nurse_appointment_system.Exception.DuplicateResourceFoundException;
@@ -21,11 +21,11 @@ import lombok.AllArgsConstructor;
 public class NurseServiceImpl implements NurseService {
     
     @Override
-    public NurseAdditionDTO addNurse(NurseAdditionDTO nurseAdditionDTO) {
+    public NurseRegistrationDTO registerNurse(NurseRegistrationDTO nurseRegistrationDTO) {
         
-        Nurse nurse = NurseMapper.mapToNurse(nurseAdditionDTO);
+        Nurse nurse = NurseMapper.mapToNurse(nurseRegistrationDTO);
         
-        Credential credential = NurseMapper.mapToNurseCredential(nurseAdditionDTO);
+        Credential credential = NurseMapper.mapToNurseCredential(nurseRegistrationDTO);
         
         if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("nurseUsername: " + credential.getEntityUsername() + " | Status: Username already present in database.");
         
@@ -33,13 +33,13 @@ public class NurseServiceImpl implements NurseService {
         
         credential.setEntityPassword(PasswordEncoder.encodePassword(nursePassword));
         
-        Nurse addedNurse = nurseRepository.save(nurse);
+        Nurse registeredNurse = nurseRepository.save(nurse);
         
-        Credential addedCredential = credentialRepository.save(credential);
+        Credential registeredCredential = credentialRepository.save(credential);
         
-        addedCredential.setEntityPassword(nursePassword);
+        registeredCredential.setEntityPassword(nursePassword);
         
-        return NurseMapper.mapToNurseAdditionDTO(addedNurse, addedCredential);
+        return NurseMapper.mapToNurseRegistrationDTO(registeredNurse, registeredCredential);
         
     }
     

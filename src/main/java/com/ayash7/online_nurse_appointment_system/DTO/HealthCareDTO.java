@@ -9,12 +9,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CheckupDTO {
+public class HealthCareDTO {
     
     private
         
-        Integer checkupID;
-        String checkupDescription;
-        Double checkupCharge;
+        Integer healthCareID;
+        String healthCareDescription;
+        Double healthCareCharge;
         
 }

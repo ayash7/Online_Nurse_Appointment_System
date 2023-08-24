@@ -16,18 +16,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Checkup")
-public class Checkup {
+@Table(name = "HealthCare")
+public class HealthCare {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "checkupID")
-    private Integer checkupID;
+    @Column(name = "healthCareID")
+    private Integer healthCareID;
     
-    @Column(name = "checkupDescription")
-    private String checkupDescription;
+    @Column(name = "healthCareDescription")
+    private String healthCareDescription;
     
-    @Column(name = "checkupCharge")
-    private Double checkupCharge;
+    @Column(name = "healthCareCharge")
+    private Double healthCareCharge;
     
 }

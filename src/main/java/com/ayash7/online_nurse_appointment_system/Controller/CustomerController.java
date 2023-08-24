@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ayash7.online_nurse_appointment_system.DTO.CustomerAdditionDTO;
 import com.ayash7.online_nurse_appointment_system.DTO.CustomerDTO;
+import com.ayash7.online_nurse_appointment_system.DTO.CustomerRegistrationDTO;
 import com.ayash7.online_nurse_appointment_system.Service.CustomerService;
 
 import lombok.AllArgsConstructor;
@@ -23,12 +23,12 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/customer")
 public class CustomerController {
     
-    @PostMapping("/add")
-    public ResponseEntity<CustomerAdditionDTO> addCustomer(@RequestBody CustomerAdditionDTO customerAdditionDTO) {
+    @PostMapping("/register")
+    public ResponseEntity<CustomerRegistrationDTO> registerCustomer(@RequestBody CustomerRegistrationDTO customerRegistrationDTO) {
         
-        CustomerAdditionDTO customer = customerService.addCustomer(customerAdditionDTO);
+        CustomerRegistrationDTO customer = customerService.registerCustomer(customerRegistrationDTO);
         
-        return new ResponseEntity<CustomerAdditionDTO>(customer, HttpStatus.CREATED);
+        return new ResponseEntity<CustomerRegistrationDTO>(customer, HttpStatus.CREATED);
         
     }
     

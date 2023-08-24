@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CustomerAdditionDTO {
+public class CustomerRegistrationDTO {
     
     private
         

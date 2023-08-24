@@ -1,11 +1,11 @@
 package com.ayash7.online_nurse_appointment_system.Service;
 
-import com.ayash7.online_nurse_appointment_system.DTO.CustomerAdditionDTO;
 import com.ayash7.online_nurse_appointment_system.DTO.CustomerDTO;
+import com.ayash7.online_nurse_appointment_system.DTO.CustomerRegistrationDTO;
 
 public interface CustomerService {
     
-    CustomerAdditionDTO addCustomer(CustomerAdditionDTO customerAdditionDTO);
+    CustomerRegistrationDTO registerCustomer(CustomerRegistrationDTO customerRegistrationDTO);
     
     CustomerDTO updateCustomer(Integer customerID, CustomerDTO customerDTO);
     
