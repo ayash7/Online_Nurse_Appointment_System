@@ -6,6 +6,7 @@ import com.ayash7.online_nurse_appointment_system.DTO.HealthCareDTO;
 import com.ayash7.online_nurse_appointment_system.Entity.HealthCare;
 import com.ayash7.online_nurse_appointment_system.Exception.ResourceNotFoundException;
 import com.ayash7.online_nurse_appointment_system.Mapper.HealthCareMapper;
+import com.ayash7.online_nurse_appointment_system.Repository.AppointmentRepository;
 import com.ayash7.online_nurse_appointment_system.Repository.HealthCareRepository;
 import com.ayash7.online_nurse_appointment_system.Service.HealthCareService;
 
@@ -31,7 +32,7 @@ public class HealthCareServiceImpl implements HealthCareService {
         
         HealthCare healthCare = healthCareRepository.findById(healthCareID).orElseThrow(
             
-            () -> new ResourceNotFoundException("healthCareID: " + healthCareID + " | Status: HealthCare not present in database.")
+            () -> new ResourceNotFoundException("healthCareID: " + healthCareID + " | Error: HealthCare not present in database.")
             
         );
         
@@ -49,14 +50,19 @@ public class HealthCareServiceImpl implements HealthCareService {
         
         healthCareRepository.findById(healthCareID).orElseThrow(
             
-            () -> new ResourceNotFoundException("healthCareID: " + healthCareID + " | Status: HealthCare not present in database.")
+            () -> new ResourceNotFoundException("healthCareID: " + healthCareID + " | Error: HealthCare not present in database.")
             
         );
+        
+        appointmentRepository.deleteAllByHealthCareHealthCareID(healthCareID);
         
         healthCareRepository.deleteById(healthCareID);
         
     }
     
-    private HealthCareRepository healthCareRepository;
-    
+    private
+        
+        HealthCareRepository healthCareRepository;
+        AppointmentRepository appointmentRepository;
+        
 }

@@ -42,6 +42,13 @@ public class WebSecurityConfiguration {
                 .requestMatchers("/api/nurse/delete/*").hasAuthority("NURSE")
                 .requestMatchers("/api/admin/*").hasAuthority("SUPERUSER")
                 .requestMatchers("/api/healthcare/*").hasAuthority("ADMIN")
+                .requestMatchers("/api/appointment/pay/*").hasAuthority("CUSTOMER")
+                .requestMatchers("/api/appointment/update/*").hasAnyAuthority("CUSTOMER", "NURSE", "ADMIN")
+                .requestMatchers("/api/appointment/delete/*").hasAuthority("CUSTOMER")
+                .requestMatchers("/api/appointment/view/customer/*").hasAuthority("CUSTOMER")
+                .requestMatchers("/api/appointment/view/nurse/*").hasAuthority("NURSE")
+                .requestMatchers("/api/appointment/view/*").hasAuthority("ADMIN")
+                .requestMatchers("/api/appointment/book").hasAuthority("CUSTOMER")
                 .anyRequest().authenticated())
             .exceptionHandling(handling -> handling
                 .authenticationEntryPoint(authenticationHandler))

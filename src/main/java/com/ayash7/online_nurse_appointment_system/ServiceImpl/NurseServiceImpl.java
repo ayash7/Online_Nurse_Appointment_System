@@ -27,7 +27,7 @@ public class NurseServiceImpl implements NurseService {
         
         Credential credential = NurseMapper.mapToNurseCredential(nurseRegistrationDTO);
         
-        if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("nurseUsername: " + credential.getEntityUsername() + " | Status: Username already present in database.");
+        if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("nurseUsername: " + credential.getEntityUsername() + " | Error: Username already present in database.");
         
         String nursePassword = credential.getEntityPassword();
         
@@ -48,7 +48,7 @@ public class NurseServiceImpl implements NurseService {
         
         Nurse nurse = nurseRepository.findById(nurseID).orElseThrow(
             
-            () -> new ResourceNotFoundException("nurseID: " + nurseID + " | Status: Nurse not present in database.")
+            () -> new ResourceNotFoundException("nurseID: " + nurseID + " | Error: Nurse not present in database.")
             
         );
         
@@ -67,7 +67,7 @@ public class NurseServiceImpl implements NurseService {
         
         Nurse nurse = nurseRepository.findById(nurseID).orElseThrow(
             
-            () -> new ResourceNotFoundException("nurseID: " + nurseID + " | Status: Nurse not present in database.")
+            () -> new ResourceNotFoundException("nurseID: " + nurseID + " | Error: Nurse not present in database.")
             
         );
         

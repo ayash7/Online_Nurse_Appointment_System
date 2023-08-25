@@ -25,12 +25,6 @@ public class CustomerMapper {
         
     }
     
-    public static Customer mapToCustomer(CustomerDTO customerDTO, String customerUsername) {
-        
-        return new Customer(customerDTO.getCustomerID(), customerUsername, customerDTO.getCustomerName(), customerDTO.getCustomerAddress(), customerDTO.getCustomerContact());
-        
-    }
-    
     public static CustomerDTO mapToCustomerDTO(Customer customer) {
         
         return new CustomerDTO(customer.getCustomerID(), customer.getCustomerName(), customer.getCustomerAddress(), customer.getCustomerContact());

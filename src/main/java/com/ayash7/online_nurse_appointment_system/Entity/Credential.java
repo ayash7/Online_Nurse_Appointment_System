@@ -18,13 +18,13 @@ import lombok.Setter;
 public class Credential {
     
     @Id
-    @Column(name = "entityUsername")
+    @Column(name = "entityUsername", length = 20)
     private String entityUsername;
     
-    @Column(name = "entityPassword")
+    @Column(name = "entityPassword", length = 90)
     private String entityPassword;
     
-    @Column(name = "entityRole")
+    @Column(name = "entityRole", length = 10)
     private String entityRole;
     
 }

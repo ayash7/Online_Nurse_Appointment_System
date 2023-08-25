@@ -24,16 +24,16 @@ public class Nurse {
     @Column(name = "nurseID")
     private Integer nurseID;
     
-    @Column(name = "nurseUsername")
+    @Column(name = "nurseUsername", length = 20)
     private String nurseUsername;
     
-    @Column(name = "nurseName")
+    @Column(name = "nurseName", length = 50)
     private String nurseName;
     
-    @Column(name = "nurseAddress")
+    @Column(name = "nurseAddress", length = 90)
     private String nurseAddress;
     
-    @Column(name = "nurseContact")
+    @Column(name = "nurseContact", length = 10)
     private String nurseContact;
     
 }

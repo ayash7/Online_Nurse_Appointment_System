@@ -1,6 +1,7 @@
 package com.ayash7.online_nurse_appointment_system.ServiceImpl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ayash7.online_nurse_appointment_system.Authentication.PasswordEncoder;
 import com.ayash7.online_nurse_appointment_system.DTO.CustomerDTO;
@@ -10,6 +11,7 @@ import com.ayash7.online_nurse_appointment_system.Entity.Customer;
 import com.ayash7.online_nurse_appointment_system.Exception.DuplicateResourceFoundException;
 import com.ayash7.online_nurse_appointment_system.Exception.ResourceNotFoundException;
 import com.ayash7.online_nurse_appointment_system.Mapper.CustomerMapper;
+import com.ayash7.online_nurse_appointment_system.Repository.AppointmentRepository;
 import com.ayash7.online_nurse_appointment_system.Repository.CredentialRepository;
 import com.ayash7.online_nurse_appointment_system.Repository.CustomerRepository;
 import com.ayash7.online_nurse_appointment_system.Service.CustomerService;
@@ -17,6 +19,7 @@ import com.ayash7.online_nurse_appointment_system.Service.CustomerService;
 import lombok.AllArgsConstructor;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
     
@@ -27,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
         
         Credential credential = CustomerMapper.mapToCustomerCredential(customerRegistrationDTO);
         
-        if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("customerUsername: " + credential.getEntityUsername() + " | Status: Username already present in database.");
+        if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("customerUsername: " + credential.getEntityUsername() + " | Error: Username already present in database.");
         
         String customerPassword = credential.getEntityPassword();
         
@@ -48,7 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
         
         Customer customer = customerRepository.findById(customerID).orElseThrow(
             
-            () -> new ResourceNotFoundException("customerID: " + customerID + " | Status: Customer not present in database.")
+            () -> new ResourceNotFoundException("customerID: " + customerID + " | Error: Customer not present in database.")
             
         );
         
@@ -67,11 +70,13 @@ public class CustomerServiceImpl implements CustomerService {
         
         Customer customer = customerRepository.findById(customerID).orElseThrow(
             
-            () -> new ResourceNotFoundException("customerID: " + customerID + " | Status: Customer not present in database.")
+            () -> new ResourceNotFoundException("customerID: " + customerID + " | Error: Customer not present in database.")
             
         );
         
         credentialRepository.deleteById(customer.getCustomerUsername());
+        
+        appointmentRepository.deleteAllByCustomerCustomerID(customerID);
         
         customerRepository.deleteById(customerID);
         
@@ -81,5 +86,6 @@ public class CustomerServiceImpl implements CustomerService {
         
         CustomerRepository customerRepository;
         CredentialRepository credentialRepository;
+        AppointmentRepository appointmentRepository;
         
 }

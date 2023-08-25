@@ -24,7 +24,7 @@ public class HealthCare {
     @Column(name = "healthCareID")
     private Integer healthCareID;
     
-    @Column(name = "healthCareDescription")
+    @Column(name = "healthCareDescription", length = 90)
     private String healthCareDescription;
     
     @Column(name = "healthCareCharge")

@@ -24,16 +24,16 @@ public class Customer {
     @Column(name = "customerID")
     private Integer customerID;
     
-    @Column(name = "customerUsername")
+    @Column(name = "customerUsername", length = 20)
     private String customerUsername;
     
-    @Column(name = "customerName")
+    @Column(name = "customerName", length = 50)
     private String customerName;
     
-    @Column(name = "customerAddress")
+    @Column(name = "customerAddress", length = 90)
     private String customerAddress;
     
-    @Column(name = "customerContact")
+    @Column(name = "customerContact", length = 10)
     private String customerContact;
     
 }

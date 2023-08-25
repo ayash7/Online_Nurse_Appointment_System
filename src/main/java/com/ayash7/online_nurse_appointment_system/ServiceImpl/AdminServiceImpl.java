@@ -22,7 +22,7 @@ public class AdminServiceImpl implements AdminService {
         
         Credential credential = AdminMapper.mapToCredential(adminDTO);
         
-        if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("adminUsername: " + credential.getEntityUsername() + " | Status: Username already present in database.");
+        if(credentialRepository.existsById(credential.getEntityUsername())) throw new DuplicateResourceFoundException("adminUsername: " + credential.getEntityUsername() + " | Error: Username already present in database.");
         
         String adminPassword = credential.getEntityPassword();
         
@@ -39,7 +39,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void deleteAdmin(String adminUsername) {
         
-        if(!(credentialRepository.existsById(adminUsername) && credentialRepository.findById(adminUsername).get().getEntityRole().equals("ADMIN"))) throw new ResourceNotFoundException("adminUsername: " + adminUsername + " | Status: Admin not present in database.");
+        if(!(credentialRepository.existsById(adminUsername) && credentialRepository.findById(adminUsername).get().getEntityRole().equals("ADMIN"))) throw new ResourceNotFoundException("adminUsername: " + adminUsername + " | Error: Admin not present in database.");
         
         credentialRepository.deleteById(adminUsername);
         

@@ -25,12 +25,6 @@ public class NurseMapper {
         
     }
     
-    public static Nurse mapToNurse(NurseDTO nurseDTO, String nurseUsername) {
-        
-        return new Nurse(nurseDTO.getNurseID(), nurseUsername, nurseDTO.getNurseName(), nurseDTO.getNurseAddress(), nurseDTO.getNurseContact());
-        
-    }
-    
     public static NurseDTO mapToNurseDTO(Nurse nurse) {
         
         return new NurseDTO(nurse.getNurseID(), nurse.getNurseName(), nurse.getNurseAddress(), nurse.getNurseContact());
