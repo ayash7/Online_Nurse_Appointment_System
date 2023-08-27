@@ -99,9 +99,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         
         Appointment appointment = AppointmentMapper.mapToAppointment(appointmentDTO.getAppointmentID(), customerRepository.findById(appointmentDTO.getCustomerID()).get(), nurseRepository.findById(appointmentDTO.getNurseID()).get(), healthCareRepository.findById(appointmentDTO.getHealthCareID()).get(), false);
         
-        Appointment registeredAppointment = appointmentRepository.save(appointment);
+        Appointment bookedAppointment = appointmentRepository.save(appointment);
         
-        return AppointmentMapper.mapToAppointmentDTO(registeredAppointment.getAppointmentID(), registeredAppointment.getCustomer().getCustomerID(), registeredAppointment.getNurse().getNurseID(), registeredAppointment.getHealthCare().getHealthCareID(), registeredAppointment.getPaymentStatus());
+        return AppointmentMapper.mapToAppointmentDTO(bookedAppointment.getAppointmentID(), bookedAppointment.getCustomer().getCustomerID(), bookedAppointment.getNurse().getNurseID(), bookedAppointment.getHealthCare().getHealthCareID(), bookedAppointment.getPaymentStatus());
         
     }
     
@@ -136,9 +136,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setNurse(nurse);
         appointment.setHealthCare(healthCare);
         
-        appointmentRepository.save(appointment);
+        Appointment updatedAppointment = appointmentRepository.save(appointment);
         
-        return AppointmentMapper.mapToAppointmentDTO(appointmentID, customer.getCustomerID(), nurse.getNurseID(), healthCare.getHealthCareID(), appointment.getPaymentStatus());
+        return AppointmentMapper.mapToAppointmentDTO(updatedAppointment.getAppointmentID(), updatedAppointment.getCustomer().getCustomerID(), updatedAppointment.getNurse().getNurseID(), updatedAppointment.getHealthCare().getHealthCareID(), updatedAppointment.getPaymentStatus());
         
     }
     

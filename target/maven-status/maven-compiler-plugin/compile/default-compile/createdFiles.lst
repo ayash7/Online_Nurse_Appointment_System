@@ -19,9 +19,11 @@ com/ayash7/online_nurse_appointment_system/Entity/HealthCare.class
 com/ayash7/online_nurse_appointment_system/Authentication/AuthenticationHandler.class
 com/ayash7/online_nurse_appointment_system/DTO/HealthCareDTO.class
 com/ayash7/online_nurse_appointment_system/Authentication/WebSecurityConfiguration.class
+com/ayash7/online_nurse_appointment_system/DTO/CustomerRegistrationDTO$CustomerRegistrationDTOBuilder.class
 com/ayash7/online_nurse_appointment_system/Entity/Appointment.class
 com/ayash7/online_nurse_appointment_system/DTO/AppointmentViewDTO.class
 com/ayash7/online_nurse_appointment_system/Repository/AppointmentRepository.class
+com/ayash7/online_nurse_appointment_system/DTO/CustomerDTO$CustomerDTOBuilder.class
 com/ayash7/online_nurse_appointment_system/Authentication/UserDetailsServiceImpl.class
 com/ayash7/online_nurse_appointment_system/Authentication/PasswordEncoder.class
 com/ayash7/online_nurse_appointment_system/Controller/AppointmentController.class
@@ -33,6 +35,7 @@ com/ayash7/online_nurse_appointment_system/DTO/CustomerDTO.class
 com/ayash7/online_nurse_appointment_system/ServiceImpl/CustomerServiceImpl.class
 com/ayash7/online_nurse_appointment_system/Service/HealthCareService.class
 com/ayash7/online_nurse_appointment_system/Repository/CredentialRepository.class
+com/ayash7/online_nurse_appointment_system/Entity/Customer$CustomerBuilder.class
 com/ayash7/online_nurse_appointment_system/Mapper/AppointmentMapper.class
 com/ayash7/online_nurse_appointment_system/Authentication/UserDetailsImpl.class
 com/ayash7/online_nurse_appointment_system/DTO/AppointmentDTO.class

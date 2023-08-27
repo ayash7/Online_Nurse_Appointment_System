@@ -1,1 +1,4 @@
+com/ayash7/online_nurse_appointment_system/Controller/CustomerControllerTests.class
 com/ayash7/online_nurse_appointment_system/OnlineNurseAppointmentSystemApplicationTests.class
+com/ayash7/online_nurse_appointment_system/Service/CustomerServiceTests.class
+com/ayash7/online_nurse_appointment_system/Repository/CustomerRepositoryTests.class
