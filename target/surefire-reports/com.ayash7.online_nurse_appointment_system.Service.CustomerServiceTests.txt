@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ayash7.online_nurse_appointment_system.Service.CustomerServiceTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s -- in com.ayash7.online_nurse_appointment_system.Service.CustomerServiceTests
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s -- in com.ayash7.online_nurse_appointment_system.Service.CustomerServiceTests
